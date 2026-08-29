@@ -95,7 +95,7 @@
       transform: translateY(-1px);
     }
 
-    /* Hero Section with Photo 1 */
+    /* Hero Section */
     .hero {
       position: relative;
       min-height: 85vh;
@@ -309,6 +309,7 @@
       width: 100%;
       height: 240px;
       object-fit: cover;
+      display: block;
       transition: transform 0.3s;
     }
 
@@ -403,3 +404,396 @@
 
     label {
       font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    label span {
+      color: var(--accent);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .btn-submit {
+      background: var(--accent);
+      color: #000;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Success Confirmation Alert */
+    .confirmation-banner {
+      display: none;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid var(--accent);
+      color: #fff;
+      padding: 1.5rem;
+      border-radius: 14px;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .confirmation-banner h4 {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Floating WhatsApp */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 62px;
+      height: 62px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      z-index: 1000;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-btn svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+
+    /* Feedback Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-window {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-header h3 {
+      font-size: 1.3rem;
+    }
+
+    .close-modal {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      form { grid-template-columns: 1fr; }
+      .form-full { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">ASHLEY<span>DSOUZA</span></div>
+    <div class="nav-links">
+      <a href="#voice">Voice Samples</a>
+      <a href="#moments">Moments</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#booking">Availability</a>
+    </div>
+    <a href="#booking" class="btn-cta">Book Date</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">Master of Ceremonies & Stage Voice</span>
+      <h1>Ashley Dsouza</h1>
+      <p>Bringing energy, timing, and unforgettable stage command to weddings, corporate galas, birthday milestones, and communion celebrations.</p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn-cta">Check Availability</a>
+        <a href="#voice" class="btn-secondary">Listen to Demos</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="metrics">
+    <div class="metric-card">
+      <strong>450+</strong>
+      <span>Events Hosted</span>
+    </div>
+    <div class="metric-card">
+      <strong>5.0 ★</strong>
+      <span>Client Feedback</span>
+    </div>
+    <div class="metric-card">
+      <strong>9+ Yrs</strong>
+      <span>Stage Experience</span>
+    </div>
+    <div class="metric-card">
+      <strong>100%</strong>
+      <span>Show Punctuality</span>
+    </div>
+  </div>
+
+  <section id="voice">
+    <div class="audio-box">
+      <div class="sec-header">
+        <h2>Voice & Delivery Samples</h2>
+        <p>Listen to tone modulation and stage delivery across occasions</p>
+      </div>
+      <div class="audio-grid">
+        <div class="audio-card">
+          <h4>Wedding Grand Entrance <span>Upbeat</span></h4>
+          <audio controls preload="none">
+            <source src="https://actions.google.com/sounds/v1/crowds/cheering_and_clapping.ogg" type="audio/ogg">
+          </audio>
+        </div>
+        <div class="audio-card">
+          <h4>Corporate Opening Keynote <span>Formal</span></h4>
+          <audio controls preload="none">
+            <source src="https://actions.google.com/sounds/v1/applause/medium_crowd_applause.ogg" type="audio/ogg">
+          </audio>
+        </div>
+        <div class="audio-card">
+          <h4>Party Games & Hype <span>High Energy</span></h4>
+          <audio controls preload="none">
+            <source src="https://actions.google.com/sounds/v1/human_voices/screaming_crowd.ogg" type="audio/ogg">
+          </audio>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="moments">
+    <div class="sec-header">
+      <h2>Moments in Action</h2>
+      <p>Stage highlights from weddings, corporate banquets, birthdays, and celebrations</p>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterGallery('all', event)">All Events</button>
+      <button class="tab-btn" onclick="filterGallery('wedding', event)">The Grand Wedding Gala</button>
+      <button class="tab-btn" onclick="filterGallery('corporate', event)">Annual Corporate Awards</button>
+      <button class="tab-btn" onclick="filterGallery('birthday', event)">Birthday Parties</button>
+      <button class="tab-btn" onclick="filterGallery('communion', event)">Holy Communion Celebration</button>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card" data-category="wedding">
+        <img src="wedding.jpg" alt="The Grand Wedding Gala" />
+        <div class="gallery-meta">
+          <h3>The Grand Wedding Gala</h3>
+          <p>Grand couple entrance, toasts, and dance floor management</p>
+        </div>
+      </div>
+      
+      <div class="gallery-card" data-category="corporate">
+        <img src="corporate.jpg" alt="Annual Corporate Awards" />
+        <div class="gallery-meta">
+          <h3>Annual Corporate Awards</h3>
+          <p>Formal summit hosting, keynote moderation & award ceremonies</p>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-category="birthday">
+        <img src="birthday.jpg" alt="Birthday Parties" />
+        <div class="gallery-meta">
+          <h3>Birthday Parties</h3>
+          <p>High-energy cake cutting, interactive games & crowd hyping</p>
+        </div>
+      </div>
+
+      <div class="gallery-card" data-category="communion">
+        <img src="communion.jpg" alt="Holy Communion Celebration" />
+        <div class="gallery-meta">
+          <h3>Holy Communion Celebration</h3>
+          <p>Family toasts, table competitions & memorable banquets</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="sec-header">
+      <h2>Client Feedback</h2>
+      <p>Direct words from families, couples, and event organizers</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p>"Ashley ran our 400-guest wedding crowd seamlessly. Every transition was sharp, fun, and warm."</p>
+        </div>
+        <div class="client-info">
+          <strong>Rohan & Michelle</strong>
+          <span>Wedding Reception</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p>"Our daughter's communion banquet was filled with laughter. Ashley kept the adults smiling and the kids fully involved."</p>
+        </div>
+        <div class="client-info">
+          <strong>Anita Fernandes</strong>
+          <span>Holy Communion Banquet</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p>"Sharp timing, clear speech, and strictly on schedule. Our corporate partners were thoroughly impressed."</p>
+        </div>
+        <div class="client-info">
+          <strong>Marcus Sterling</strong>
+          <span>Corporate Awards Gala</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="feedback-trigger-wrap">
+      <button class="btn-secondary" onclick="openFeedbackModal()">+ Add Your Event Feedback</button>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div class="booking-wrapper">
+      <div class="sec-header">
+        <h2>Check Event Availability</h2>
+        <p>Submit your requirements to verify calendar dates and receive a formal quote</p>
+      </div>
+
+      <form id="bookingForm">
+        <div class="field">
+          <label for="name">Your Name / Organization <span>*</span></label>
+          <input type="text" id="name" name="Client_Name" placeholder="David Miller" required>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone / WhatsApp Number <span>*</span></label>
+          <input type="tel" id="phone" name="Phone_Number" placeholder="+971 50 123 4567" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address <span>*</span></label>
+          <input type="email" id="email" name="Email_Address" placeholder="name@domain.com" required>
+        </div>
+
+        <div class="field">
+          <label for="event_type">Event Type <span>*</span></label>
+          <select id="event_type" name="Event_Type" required>
+            <option value="">Select Event Type</option>
+            <option value="The Grand Wedding Gala">The Grand Wedding Gala</option>
+            <option value="Annual Corporate Awards">Annual Corporate Awards</option>
+            <option value="Birthday Party">Birthday Party</option>
+            <option value="Holy Communion Celebration">Holy Communion Celebration</option>
+            <option value="Other Occasion">Other Celebration</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="event_date">Event Date (DD/MM/YYYY) <span>*</span></label>
+          <input type="text" id="event_date" name="Event_Date" placeholder="Select Date" required>
+        </div>
+
+        <div class="field">
+          <label for="location">Venue / City <span>*</span></label>
+          <input type="text" id="location" name="Venue_Location" placeholder="Hotel Ballroom, City" required>
+        </div>
+
+        <div class="field form-full">
+          <label for="notes">Event Agenda & Details <span>*</span></label>
+          <textarea id="notes" name="Event_Notes" rows="4" placeholder="Mention guest count, timings, and program requirements..." required></textarea>
+        </div>
+
+        <div class="form-full">
+          <button type="submit" id="submitBtn" class="btn-submit" style="width:100%;">Submit Availability Request</button>
+        </div>
+      </form>
+
+      <div id="confirmationBanner" class="confirmation-banner">
+        <h4>Inquiry Received</h4>
+        <p>MC Ashley will review the calendar and get back to you shortly with date confirmation and details.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="feedbackModal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3>Share Event Feedback</h3>
+        <button class="close-modal" onclick="closeFeedbackModal()">&times;</button>
+      </div>
+      <form id="feedbackForm">
+        <div class="field form-full">
+          <label>Your Name <span>*</span></label>
+          <input type="text" name="Client_Name" placeholder="E.g., Sharon & Kevin" required>
+        </div>
+        <div class="field form-full">
+          <label>Event Type <span>*</span></label>
+          <input type="text" name="Event_Type" placeholder="E.g., Wedding Reception" required>
+        </div>
+        <div class="field form-full">
+          <label>Rating <span>*</span></label>
+          <select name="Rating" required>
+            <option value="5 Stars - Outstanding">★★★★★ (Outstanding)</option>
+            <option value="4 Stars - Great">★★★★☆ (Great)</option>
+          </select>
+        </div>
+        <div class="field form-full">
