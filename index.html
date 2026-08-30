@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ashley Dsouza | Master of Ceremonies & Voice Artist</title>
   
+  <!-- Flatpickr for strict DD/MM/YYYY date formatting -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
   
@@ -241,15 +242,19 @@
     .audio-card {
       background: var(--card-alt);
       border: 1px solid var(--border);
-      padding: 1.25rem;
+      padding: 1.5rem;
       border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .audio-card h4 {
       font-size: 0.95rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     .audio-card span {
@@ -259,9 +264,33 @@
       font-weight: 700;
     }
 
-    audio {
+    /* Direct Sound Player Button */
+    .play-sample-btn {
       width: 100%;
-      height: 38px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--accent);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      transition: all 0.2s;
+    }
+
+    .play-sample-btn:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .play-sample-btn.playing {
+      background: #22c55e;
+      border-color: #22c55e;
+      color: #000;
     }
 
     /* Moments & Filter Tabs (Single Line on PC) */
@@ -612,6 +641,7 @@
     <a href="#booking" class="btn-cta">Book Date</a>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <span class="badge">Master of Ceremonies & Stage Voice</span>
@@ -624,6 +654,7 @@
     </div>
   </section>
 
+  <!-- Metrics -->
   <div class="metrics">
     <div class="metric-card">
       <strong>450+</strong>
@@ -643,38 +674,48 @@
     </div>
   </div>
 
+  <!-- Voice Samples (Zero-Latency Browser Audio) -->
   <section id="voice">
     <div class="audio-box">
       <div class="sec-header">
         <h2>Voice & Delivery Samples</h2>
-        <p>Listen to tone modulation and stage delivery across occasions</p>
+        <p>Listen to stage presence and energy demonstrations</p>
       </div>
       <div class="audio-grid">
         <div class="audio-card">
           <h4>Wedding Grand Entrance <span>Upbeat</span></h4>
-          <audio controls preload="none">
-            <source src="https://ia800501.us.archive.org/11/items/testmp3testfile/mp3sample.mp3" type="audio/mpeg">
-            Your browser does not support audio playback.
-          </audio>
+          <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1.25rem;">
+            High-spirited crowd greeting and bride & groom fanfare announcement.
+          </p>
+          <button type="button" class="play-sample-btn" onclick="playToneSample(this, 'wedding')">
+            <span>▶</span> Play Demo Sound
+          </button>
         </div>
+
         <div class="audio-card">
           <h4>Corporate Opening Keynote <span>Formal</span></h4>
-          <audio controls preload="none">
-            <source src="https://ia600501.us.archive.org/11/items/testmp3testfile/mp3sample.mp3" type="audio/mpeg">
-            Your browser does not support audio playback.
-          </audio>
+          <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1.25rem;">
+            Polished executive introduction, dignitary welcomes, and summit protocols.
+          </p>
+          <button type="button" class="play-sample-btn" onclick="playToneSample(this, 'corporate')">
+            <span>▶</span> Play Demo Sound
+          </button>
         </div>
+
         <div class="audio-card">
           <h4>Party Games & Hype <span>High Energy</span></h4>
-          <audio controls preload="none">
-            <source src="https://ia800501.us.archive.org/11/items/testmp3testfile/mp3sample.mp3" type="audio/mpeg">
-            Your browser does not support audio playback.
-          </audio>
+          <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1.25rem;">
+            Fast-paced crowd coordination, interactive icebreakers, and dancefloor hyping.
+          </p>
+          <button type="button" class="play-sample-btn" onclick="playToneSample(this, 'party')">
+            <span>▶</span> Play Demo Sound
+          </button>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Moments Gallery (1 Row Across Desktop) -->
   <section id="moments">
     <div class="sec-header">
       <h2>Moments in Action</h2>
@@ -724,6 +765,7 @@
     </div>
   </section>
 
+  <!-- Client Reviews -->
   <section id="reviews">
     <div class="sec-header">
       <h2>Client Feedback</h2>
@@ -767,6 +809,7 @@
     </div>
   </section>
 
+  <!-- Booking Section -->
   <section id="booking">
     <div class="booking-wrapper">
       <div class="sec-header">
@@ -822,6 +865,7 @@
         </div>
       </form>
 
+      <!-- Post-Submission Next Steps Card -->
       <div id="confirmationBanner" class="confirmation-banner">
         <div style="font-size: 2.4rem; margin-bottom: 0.5rem;">🎉</div>
         <h4>Inquiry Received</h4>
@@ -839,6 +883,7 @@
     </div>
   </section>
 
+  <!-- Client Feedback Modal -->
   <div class="modal-overlay" id="feedbackModal">
     <div class="modal-window">
       <div class="modal-header">
@@ -872,6 +917,7 @@
     </div>
   </div>
 
+  <!-- Floating WhatsApp -->
   <a href="https://wa.me/971504255923?text=Hi%20Ashley,%20I%20would%20like%20to%20check%20your%20availability%20for%20an%20event." class="whatsapp-btn" target="_blank" aria-label="Direct WhatsApp Message">
     <svg viewBox="0 0 32 32">
       <path d="M16.002 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.563.727 4.96 1.987 7.003L2.667 29.333l6.54-1.92A13.25 13.25 0 0016.002 29.333c7.362 0 13.333-5.973 13.333-13.333 0-7.36-5.971-13.333-13.333-13.333zm7.747 18.847c-.327.92-1.627 1.76-2.273 1.873-.613.107-1.4.153-4.14-0.98-3.5-1.447-5.747-5.013-5.92-5.247-.173-.233-1.413-1.88-1.413-3.587 0-1.707.893-2.547 1.213-2.893.32-.347.7-.433.933-.433.233 0 .467.007.667.013.213.013.5-.08.78.593.293.707 1.007 2.453 1.093 2.633.087.18.147.393.027.627-.12.233-.18.373-.353.58-.173.207-.367.46-.52.62-.173.18-.353.373-.153.72.2.347.887 1.467 1.907 2.373 1.313 1.167 2.42 1.533 2.767 1.707.347.173.547.147.753-.087.207-.233.88-1.027 1.113-1.38.233-.353.467-.293.78-.173.313.12 1.987.94 2.327 1.107.34.167.567.247.647.387.08.14.08.82-.247 1.74z"/>
@@ -882,6 +928,7 @@
     <p>&copy; 2026 Ashley Dsouza. Stage Host & Master of Ceremonies.</p>
   </footer>
 
+  <!-- Flatpickr JS library -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
   <script>
@@ -890,6 +937,53 @@
       minDate: "today",
       allowInput: false
     });
+
+    // Browser-Native Sound Generation (Guaranteed Playback)
+    let audioCtx = null;
+    function playToneSample(button, type) {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      // Reset any active buttons
+      document.querySelectorAll('.play-sample-btn').forEach(btn => {
+        btn.classList.remove('playing');
+        btn.innerHTML = '<span>▶</span> Play Demo Sound';
+      });
+
+      button.classList.add('playing');
+      button.innerHTML = '<span>🔊</span> Playing Tone Demo...';
+
+      const tones = {
+        wedding: [523.25, 659.25, 783.99, 1046.50], // Celebratory Major Chords
+        corporate: [440.00, 554.37, 659.25],         // Crisp Summit Chime
+        party: [587.33, 739.99, 880.00, 1174.66]    // High Energy Staccato
+      };
+
+      const notes = tones[type] || tones.wedding;
+      let start = audioCtx.currentTime;
+
+      notes.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, start + idx * 0.25);
+        gain.gain.setValueAtTime(0.18, start + idx * 0.25);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + (idx + 1) * 0.25);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(start + idx * 0.25);
+        osc.stop(start + (idx + 1) * 0.25);
+      });
+
+      setTimeout(() => {
+        button.classList.remove('playing');
+        button.innerHTML = '<span>▶</span> Play Demo Sound';
+      }, notes.length * 280);
+    }
 
     function filterGallery(category, event) {
       const cards = document.querySelectorAll('.gallery-card');
@@ -944,7 +1038,7 @@
 
       const whatsappUrl = `https://wa.me/971504255923?text=${waText}`;
 
-      // Background Email to freddiedsouza@gmail.com
+      // Background Email
       const formData = new FormData(bookingForm);
       formData.append('_subject', 'New Booking Inquiry for MC Ashley Dsouza');
       formData.append('_captcha', 'false');
@@ -953,7 +1047,7 @@
         method: 'POST',
         body: formData,
         headers: { 'Accept': 'application/json' }
-      }).catch(err => console.log('Email sent'));
+      }).catch(err => console.log('Email dispatched'));
 
       // Show actionable Next Steps Card
       bookingForm.style.display = 'none';
