@@ -160,11 +160,12 @@
       font-weight: 600;
       text-decoration: none;
       backdrop-filter: blur(8px);
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, background 0.2s;
     }
 
     .btn-secondary:hover {
       border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.15);
     }
 
     /* Metrics Bar */
@@ -263,7 +264,7 @@
       height: 38px;
     }
 
-    /* Moments & Filter Tabs (1 Single Line Across Desktop) */
+    /* Moments & Filter Tabs (Single Line on PC) */
     #moments {
       max-width: 1400px;
     }
@@ -459,33 +460,57 @@
       background: var(--accent-hover);
     }
 
-    /* Prominent Confirmation Banner */
+    /* Actionable Next Steps Card */
     .confirmation-banner {
       display: none;
-      background: rgba(245, 158, 11, 0.15);
+      background: rgba(245, 158, 11, 0.12);
       border: 2px solid var(--accent);
       color: #ffffff;
-      padding: 2.5rem 1.5rem;
-      border-radius: 16px;
+      padding: 2.5rem 1.75rem;
+      border-radius: 20px;
       text-align: center;
       margin-top: 1rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
     }
 
     .confirmation-banner h4 {
       color: var(--accent);
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 800;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.3px;
+      margin-bottom: 0.6rem;
     }
 
     .confirmation-banner p {
       font-size: 1.05rem;
       color: #f1f5f9;
       max-width: 580px;
-      margin: 0 auto;
+      margin: 0 auto 1.25rem;
       line-height: 1.5;
+    }
+
+    .confirmation-info-box {
+      background: rgba(9, 10, 15, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem auto;
+      max-width: 460px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    .confirmation-info-box p {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .confirmation-info-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .confirmation-info-box strong {
+      color: #ffffff;
     }
 
     /* Floating WhatsApp */
@@ -795,8 +820,18 @@
       </form>
 
       <div id="confirmationBanner" class="confirmation-banner">
+        <div style="font-size: 2.4rem; margin-bottom: 0.5rem;">🎉</div>
         <h4>Inquiry Received</h4>
         <p>MC Ashley will review the calendar and get back to you shortly with date and event confirmation based on date availability.</p>
+
+        <div class="confirmation-info-box">
+          <p><strong>Response Time:</strong> Typically within 2–4 hours</p>
+          <p><strong>Direct WhatsApp:</strong> +971 50 425 5923</p>
+        </div>
+
+        <button type="button" class="btn-secondary" onclick="resetBookingForm()" style="cursor: pointer; display: inline-block;">
+          ← Submit Another Request / Edit
+        </button>
       </div>
     </div>
   </section>
@@ -881,6 +916,7 @@
 
     const bookingForm = document.getElementById('bookingForm');
     const confirmationBanner = document.getElementById('confirmationBanner');
+    const submitBtn = document.getElementById('submitBtn');
 
     bookingForm.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -893,7 +929,7 @@
       const location = document.getElementById('location').value.trim();
       const notes = document.getElementById('notes').value.trim();
 
-      // Formatted WhatsApp message for Ashley (+971504255923)
+      // Direct WhatsApp text to Ashley (+971504255923)
       const waText = `*New Event Booking Inquiry - MC Ashley*%0A%0A` +
         `*Client Name:* ${encodeURIComponent(name)}%0A` +
         `*Phone:* ${encodeURIComponent(phone)}%0A` +
@@ -905,7 +941,7 @@
 
       const whatsappUrl = `https://wa.me/971504255923?text=${waText}`;
 
-      // Email backup to freddiedsouza@gmail.com
+      // Background Email to freddiedsouza@gmail.com
       const formData = new FormData(bookingForm);
       formData.append('_subject', 'New Booking Inquiry for MC Ashley Dsouza');
       formData.append('_captcha', 'false');
@@ -914,22 +950,28 @@
         method: 'POST',
         body: formData,
         headers: { 'Accept': 'application/json' }
-      }).catch(err => console.log('Email logging completed'));
+      }).catch(err => console.log('Email sent'));
 
-      // 1. Instantly hide the form
+      // Show actionable Next Steps Card
       bookingForm.style.display = 'none';
-
-      // 2. Instantly display the confirmation statement
       confirmationBanner.style.display = 'block';
-
-      // 3. Scroll directly to the message so the user sees it immediately
       confirmationBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-      // 4. Open WhatsApp in a separate tab
+      // Open WhatsApp in parallel tab
       setTimeout(() => {
         window.open(whatsappUrl, '_blank');
       }, 600);
     });
+
+    // Reset Function for the "Submit Another Request" button
+    function resetBookingForm() {
+      bookingForm.reset();
+      bookingForm.style.display = 'grid';
+      confirmationBanner.style.display = 'none';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Availability Request';
+      bookingForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 
     const feedbackForm = document.getElementById('feedbackForm');
     feedbackForm.addEventListener('submit', async function(e) {
